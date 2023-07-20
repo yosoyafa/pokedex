@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { FlatList, View } from 'react-native'
-import { getNumber, removeDups, sort } from '../../utils'
+import { getNumber } from '../../utils'
 import { PokemonCard, SearchBar } from '../../components'
 import { HomeScreenProps } from '../../navigation/MainStack/types'
 import { isEmpty, isNil } from 'ramda'
@@ -17,14 +17,17 @@ const Home = ({ navigation }: HomeScreenProps): JSX.Element => {
   const [searchTerm, setSearchTerm] = useState<string>('')
 
   const onSearch = async (text: string) => {
-    setSearchTerm(text)
-    if (!isEmpty(text)) {
+    if (!isEmpty(text) && isEmpty(filteredPokemons)) {
       const result = await fetchSinglePokemon(text)
       if (!isNil(result)) {
         addPokemon(result)
       }
     }
   }
+
+  useEffect(() => {
+    onSearch(searchTerm)
+  }, [searchTerm])
 
   const filteredPokemons = !isEmpty(searchTerm)
     ? pokemons.filter(
@@ -38,10 +41,11 @@ const Home = ({ navigation }: HomeScreenProps): JSX.Element => {
     <View style={styles.main}>
       <SearchBar
         value={searchTerm}
-        onChangeText={onSearch}
+        onChangeText={setSearchTerm}
         style={styles.searchBar}
         placeholder="Search"
         autoFocus={false}
+        testID="searchBar"
       />
       <FlatList
         data={filteredPokemons}
