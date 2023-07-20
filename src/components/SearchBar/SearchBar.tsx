@@ -38,6 +38,7 @@ const SearchBar = ({
         onPress={() => inputRef.current?.focus()}
       />
       <TextInput
+        testID="input"
         ref={inputRef}
         style={[inputStyle, styles.input]}
         placeholder={placeholder}

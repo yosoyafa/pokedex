@@ -4,7 +4,7 @@ import styles from './styles'
 
 const LoadingPage = (): JSX.Element => (
   <View style={styles.main}>
-    <ActivityIndicator />
+    <ActivityIndicator testID="spinner" />
   </View>
 )
 

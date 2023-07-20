@@ -21,7 +21,11 @@ const PokemonCard = ({
     PokemonContext
   ) as PokemonContextType
   return (
-    <TouchableOpacity onPress={onPress} style={styles.main}>
+    <TouchableOpacity
+      onPress={onPress}
+      style={styles.main}
+      testID="card"
+    >
       <Image
         source={{
           uri: getImage(number),

@@ -6,14 +6,7 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import {
-  FlatList,
-  Image,
-  ScrollView,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native'
+import { FlatList, Image, ScrollView, Text, View } from 'react-native'
 import { PokemonDetailsScreenProps } from '../../navigation/MainStack/types'
 import { capitalize, spritesToArray } from '../../utils'
 import { Pokemon } from '../../types'
@@ -37,11 +30,8 @@ const PokemonDetails = ({
   ) as PokemonContextType
 
   const [pokemon, setPokemon] = useState<Pokemon>()
-  const [showAllMoves, setShowAllMoves] = useState<boolean>(false)
 
   const scrollViewRef = useRef<ScrollView>(null)
-
-  const toggleShowAllMoves = () => setShowAllMoves(!showAllMoves)
 
   const loadPokemon = useCallback(async () => {
     const result = await fetchSinglePokemon(name)
@@ -84,6 +74,7 @@ const PokemonDetails = ({
     >
       <View style={styles.main}>
         <Image
+          testID="image"
           source={{
             uri: getImage(id),
           }}
@@ -102,13 +93,14 @@ const PokemonDetails = ({
         )}
         {!isNil(weight) && (
           <DetailsSection title="Weight">
-            <Text>{weight}kg</Text>
+            <Text>{`${weight}kg`}</Text>
           </DetailsSection>
         )}
         {!isEmpty(sprites) && (
           <DetailsSection title="Sprites">
             <View style={styles.spritesContainer}>
               <FlatList
+                testID="spritesList"
                 contentContainerStyle={styles.spritesList}
                 data={mappedStripes}
                 keyExtractor={(item) => item}
@@ -116,6 +108,7 @@ const PokemonDetails = ({
                 showsHorizontalScrollIndicator={false}
                 renderItem={({ item }) => (
                   <Image
+                    testID="sprite"
                     source={{ uri: item }}
                     style={styles.spriteImage}
                   />

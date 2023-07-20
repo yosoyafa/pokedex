@@ -25,23 +25,28 @@ const useShowMore = ({
 }) => {
   const [showAll, setShowAll] = useState<boolean>(false)
 
-  const shouldShowButtom = list.length > 20 && !showAll
+  const shouldShowButtom = list.length > limit && !showAll
 
   const text = `${(showAll ? list : list.slice(0, limit)).join(
     ', '
-  )}${shouldShowButtom && '...'}`
+  )}${shouldShowButtom ? '...' : ''}`
 
-  const ShowMoreOrLessLabelButton = () => (
-    <TouchableOpacity
-      onPress={() => {
-        setShowAll(!showAll)
-      }}
-    >
-      <Text style={[buttonStyle]}>
-        {showAll ? 'Show less' : 'Show more'}
-      </Text>
-    </TouchableOpacity>
-  )
+  const ShowMoreOrLessLabelButton = () => {
+    if (list.length > limit) {
+      return (
+        <TouchableOpacity
+          onPress={() => {
+            setShowAll(!showAll)
+          }}
+        >
+          <Text style={[buttonStyle]}>
+            {showAll ? 'Show less' : 'Show more'}
+          </Text>
+        </TouchableOpacity>
+      )
+    }
+    return <></>
+  }
 
   return {
     text,
