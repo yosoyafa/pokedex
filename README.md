@@ -1,5 +1,18 @@
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
+### Main Screen
+<img width="222" alt="image" src="https://github.com/yosoyafa/pokedex/assets/19701443/a60f9ee8-c244-4cb4-8722-b2bacc7f073d" description="iOS">
+<img width="210" alt="image" src="https://github.com/yosoyafa/pokedex/assets/19701443/4ff254ad-c5a4-4672-9b30-6fa09c156590" caption="Android">
+
+### Details Screen
+<img width="218" alt="image" src="https://github.com/yosoyafa/pokedex/assets/19701443/ac30a503-505c-4830-a6c7-c1583f298136" caption="iOS">
+<img width="224" alt="image" src="https://github.com/yosoyafa/pokedex/assets/19701443/7303dbee-62f5-4827-a7e1-568477a8cc04" caption="Android">
+
+### Search
+<img width="226" alt="image" src="https://github.com/yosoyafa/pokedex/assets/19701443/99638269-0ea3-48ab-9e8a-4816cca91b61" caption="by number">
+<img width="221" alt="image" src="https://github.com/yosoyafa/pokedex/assets/19701443/2e3dcb8b-d0fc-438d-89e4-773346894561" caption="by name">
+
+
 # Getting Started
 
 >**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
